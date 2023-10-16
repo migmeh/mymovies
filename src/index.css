@@ -1,5 +1,5 @@
 
-*{border:0px; margin:0px; padding:0px; box-sizing: border-box;}
+*{border:0px; margin:0px; padding:0px; box-sizing: border-box; }
 a:link{text-decoration: none;}
 a:visited{text-decoration: none;}
 a:hover{text-decoration: none;}
@@ -9,9 +9,9 @@ a:active{text-decoration: none;}
 .s{clear: both; display:block;}
 .imagen{max-width:100%; cursor: pointer;}
 
-
-div{ background-color: #2B2B2B; color:#CCCCCC; width:100%;}
-
+#root{background-color:#2B2B2B;}
+div{ color:#CCCCCC;}
+.modal-body, .modal-head, .modal-footer, .modal-title h4{background-color:#2B2B2B; font-family:Arial;  color:#CCCCCC;}
 
 body{background-color:#2B2B2B; font-family:Arial; height:20px; color:#CCCCCC;}
 
