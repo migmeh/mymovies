@@ -11,7 +11,7 @@ a:active{text-decoration: none;}
 
 #root{background-color:#2B2B2B;}
 div{ color:#CCCCCC;}
-.modal-body, .modal-head, .modal-footer, .modal-title h4{background-color:#2B2B2B; font-family:Arial;  color:#CCCCCC;}
+.modal-body, .modal-head, .modal-footer, .modal-title h4, .modal-content{background-color:#2B2B2B; font-family:Arial;  color:#CCCCCC; border:0px!important;}
 
 body{background-color:#2B2B2B; font-family:Arial; height:20px; color:#CCCCCC;}
 

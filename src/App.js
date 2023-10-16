@@ -67,7 +67,9 @@ export default function App() {
     async function getPost() {
         // para implementar con el proxy del otro proyecto descarguelo, y corra el proxy despues use httP://localhost:8080 sin apikey
         const apiKey = 'f5a8915645501a2493727d6b09cbabd0';
-        let resp = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}&media_type=movie`);
+        const laurl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}&media_type=movie`;
+        const laurlDos = 'http://localhost:8080'; //este es la url del proxi necesitas correrlo para cambiar
+        let resp = await axios.get(laurl); //cambiar la bariable si el proxy esta corriendo
         setPost(resp.data.results);
         console.log(resp.data.results);
     }
