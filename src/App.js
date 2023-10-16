@@ -10,13 +10,23 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 
+
+import Form from 'react-bootstrap/Form';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+
+import InputGroup from 'react-bootstrap/InputGroup';
+
+
+
+
+
 function Example({ime, tit, overview}) {
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
 
 
 
@@ -56,9 +66,18 @@ function Example({ime, tit, overview}) {
     );
 }
 
+
+
+
+
 export default function App() {
+
     const [modalShow, setModalShow] = React.useState(false);
-    const [post, setPost] = React.useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [results, setResults] = useState([]);
+
+
+    //const [post, setPost] = React.useState(null);
 
 
     React.useEffect(() => {
@@ -70,41 +89,99 @@ export default function App() {
         const laurl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}&media_type=movie`;
         const laurlDos = 'http://localhost:8080'; //este es la url del proxi necesitas correrlo para cambiar
         let resp = await axios.get(laurl); //cambiar la bariable si el proxy esta corriendo
-        setPost(resp.data.results);
+        setResults(resp.data.results);
         console.log(resp.data.results);
     }
 
 
 
-    if (!post) return "No post!"
+
+    ////////////////
+
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
+
+    const handleSearchSubmit = (event) => {
+        event.preventDefault();
+        axios.get('https://api.themoviedb.org/3/search/movie?api_key=f5a8915645501a2493727d6b09cbabd0', {
+            params: {
+                query: searchTerm
+            }
+        })
+            .then((response) => {
+                setResults(response.data.results);
+                console.log(response.data.results);
+            })
+            .catch((error) => {
+                console.error('Error al realizar la búsqueda:', error);
+            });
+    };
+
 
 
     return (
-<div>
+        <div>
+            <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
+                <Container fluid>
+                    <Navbar.Brand href="http://localhost:3000">Welcome</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="navbarScroll" />
+                    <Navbar.Collapse id="navbarScroll">
+                        <Nav className="me-auto my-2 my-lg-0"
+                             style={{ maxHeight: '100px' }} >
+                            <Nav.Link href="#" disabled>
+                                Link
+                            </Nav.Link>
+                        </Nav>
+                        <Form onSubmit={handleSearchSubmit} className="d-flex">
+                            <Form.Control
+                                type="search"
+                                placeholder="Search"
+                                className="me-2"
+                                aria-label="Search"
+                                name="form"
+                                value={searchTerm} onChange={handleSearchChange}
+                            />
+                            <Button variant="success" onClick={handleSearchChange}>Search</Button>
+                        </Form>
 
 
-    <Container className="flex-container">
-        <div className="mytitulo"><h1>Welcome</h1></div>
-        {post.map((item) =>
-            <Row className="flex-item" key={item.id}>
-                <Col>
-
-                    <Example tit={item.original_title}  ime={item.poster_path} overview={item.overview} show={modalShow} onHide={() => setModalShow(false)} />
-
-                    <div className='title'>
-                        {item.original_title}
-                    </div>
-                </Col>
-
-
-            </Row>
-        )}
 
 
 
+                    </Navbar.Collapse>
+                </Container>
 
-    </Container>
+            </Navbar>
+            <Container className="flex-container">
 
-</div>
+
+
+                    {results.map((result, index) => (
+                        <Row className="flex-item" key={index}>
+                            <Col>
+                                <Example tit={result.original_title}  ime={result.poster_path} overview={result.overview} show={modalShow} onHide={() => setModalShow(false)} />
+
+                                <div className='title'>
+                                    {result.original_title}
+                                </div>
+
+                            </Col>
+                        </Row>
+                    ))}
+
+
+
+
+
+
+            </Container>
+
+
+        </div>
+
     );
 }
+
+
+

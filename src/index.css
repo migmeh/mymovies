@@ -9,6 +9,8 @@ a:active{text-decoration: none;}
 .s{clear: both; display:block;}
 .imagen{max-width:100%; cursor: pointer;}
 
+.navbar-collapse {padding:20px 20px 20px 20px;}
+
 #root{background-color:#2B2B2B;}
 div{ color:#CCCCCC;}
 .modal-body, .modal-head, .modal-footer, .modal-title h4, .modal-content{background-color:#2B2B2B; font-family:Arial;  color:#CCCCCC; border:0px!important;}
@@ -17,15 +19,11 @@ body{background-color:#2B2B2B; font-family:Arial; height:20px; color:#CCCCCC;}
 
 .descripcion{with:100%; padding:20px 0px 10px 0px;}
 .movieIm{width: 100%; text-align: center;}
-.mytitulo{
-  width:100%;
-  padding:20px 20px 20px 20px;
-}
 
-.flex-container {
+
+container, .flex-container{
   flex-wrap: wrap;
   display: flex;
-  max-width:1200px;
   margin:0px auto;
   background-color: #2B2B2B;
 }
