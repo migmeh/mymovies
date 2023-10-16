@@ -10,12 +10,13 @@ a:active{text-decoration: none;}
 .imagen{max-width:100%; cursor: pointer;}
 
 
+div{ background-color: #2B2B2B; color:#CCCCCC; width:100%;}
 
 
+body{background-color:#2B2B2B; font-family:Arial; height:20px; color:#CCCCCC;}
 
-body{background-color:#282c34; font-family:Arial; height:20px; color:#CCCCCC;}
-
-
+.descripcion{with:100%; padding:20px 0px 10px 0px;}
+.movieIm{width: 100%; text-align: center;}
 .mytitulo{
   width:100%;
   padding:20px 20px 20px 20px;
@@ -26,13 +27,13 @@ body{background-color:#282c34; font-family:Arial; height:20px; color:#CCCCCC;}
   display: flex;
   max-width:1200px;
   margin:0px auto;
-  background-color: #282c34;
+  background-color: #2B2B2B;
 }
 
 .flex-item {
   width:300px;
   padding:20px 20px 20px 20px;
-  background-color:#CCCCCC;
+  background-color:#3C3F41;
 
 }
 

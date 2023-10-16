@@ -21,7 +21,7 @@ function Example({ime, tit, overview}) {
 
 
     return (
-        <div>
+        <div className="cont-todo">
 
             <img className="imagen" src={`https://image.tmdb.org/t/p/w300/${ime}`} variant="primary" onClick={handleShow}/>
             <Modal
@@ -30,14 +30,21 @@ function Example({ime, tit, overview}) {
                 backdrop="static"
                 keyboard={false}
             >
-                <Modal.Header closeButton>
+                <Modal.Header closeButton  data-bs-theme="dark" className='bg-dark p-2'>
                     <Modal.Title>{tit}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {overview}
+                    <div className="movieIm">
+                        <img className="imagen" src={`https://image.tmdb.org/t/p/w300/${ime}`}/>
+
+                    </div>
+                     <div className="descripcion">
+                        {overview}
+                    </div>
+
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                <Modal.Footer  data-bs-theme="dark" className='bg-dark p-2'>
+                    <Button variant="success" onClick={handleClose}>
                         Close
                     </Button>
 
