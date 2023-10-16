@@ -142,7 +142,7 @@ export default function App() {
                                 name="form"
                                 value={searchTerm} onChange={handleSearchChange}
                             />
-                            <Button variant="success" onClick={handleSearchChange}>Search</Button>
+                            <Button variant="success" onClick={handleSearchSubmit}>Search</Button>
                         </Form>
 
 
