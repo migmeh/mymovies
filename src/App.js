@@ -20,6 +20,13 @@ import Navbar from 'react-bootstrap/Navbar';
 
 function Example({ime, tit, overview}) {
 
+
+    if(ime ==='' || ime === null){
+        ime= require(`../src/img/none.png`);
+    }else{
+        ime = `https://image.tmdb.org/t/p/w300/${ime}`;
+    }
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -30,7 +37,7 @@ function Example({ime, tit, overview}) {
     return (
         <div className="cont-todo">
 
-            <img className="imagen" alt={tit} src={`https://image.tmdb.org/t/p/w300/${ime}`} variant="primary" onClick={handleShow}/>
+            <img className="imagen" alt={tit} src={`${ime}`} variant="primary" onClick={handleShow}/>
             <Modal
                 show={show}
                 onHide={handleClose}
@@ -42,7 +49,7 @@ function Example({ime, tit, overview}) {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="movieIm">
-                        <img className="imagen" alt={tit} src={`https://image.tmdb.org/t/p/w300/${ime}`}/>
+                        <img className="imagen" alt={tit} src={`${ime}`}/>
 
                     </div>
                      <div className="descripcion">
