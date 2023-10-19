@@ -73,19 +73,18 @@ export default function App() {
     const [searchTerm, setSearchTerm] = useState('');
     const [results, setResults] = useState([]);
 
-
-    //const [post, setPost] = React.useState(null);
-
+    // para implementar con el proxy del otro proyecto descarguelo, y corra el proxy despues use http://localhost:8080
+    const apiKey = 'f5a8915645501a2493727d6b09cbabd0'; //comentar esta linea si usa el proxy
+    //https://api.themoviedb.org/3
+    const url = 'https://api.themoviedb.org/3'; //para usar el proxi cambiar por http://localhost:8080
 
     React.useEffect(() => {
         getPost();
     }, []);
     async function getPost() {
-        // para implementar con el proxy del otro proyecto descarguelo, y corra el proxy despues use httP://localhost:8080 sin apikey
-        const apiKey = 'f5a8915645501a2493727d6b09cbabd0';
-        const laurl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}&media_type=movie`;
-        //const laurlDos = 'http://localhost:8080'; //este es la url del proxi necesitas descomentar
-        let resp = await axios.get(laurl); //cambiar la bariable si el proxy esta corriendo
+
+
+        let resp = await axios.get(`${url}/trending/movie/day?api_key=${apiKey}&media_type=movie`);
         setResults(resp.data.results);
         console.log(resp.data.results);
     }
@@ -101,7 +100,7 @@ export default function App() {
 
     const handleSearchSubmit = (event) => {
         event.preventDefault();
-        axios.get('https://api.themoviedb.org/3/search/movie?api_key=f5a8915645501a2493727d6b09cbabd0', {
+        axios.get(`${url}/search/movie?api_key=${apiKey}`, { //para usar el proxi cambiar po http://localhost:8080/search
             params: {
                 query: searchTerm
             }
